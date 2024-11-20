@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date au centre</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+        #date-container {
+            font-size: 2rem;
+            color: #333;
+            padding: 10px 20px;
+            border: 2px solid #007BFF;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="date-container"></div>
+    <script>
+// Fonction pour obtenir la date et l'heure actuelles
+function afficherDateEtHeure() {
+    const dateContainer = document.getElementById('date-container');
+    const maintenant = new Date();
+    
+    // Options pour la date en français
+    const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const date = maintenant.toLocaleDateString('fr-FR', optionsDate);
+    
+    // Format de l'heure : HH:MM:SS
+    const heure = maintenant.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+    // Affichage de la date et de l'heure
+    dateContainer.textContent = `${date} - ${heure}`;
+}
+
+// Mettre à jour toutes les secondes
+setInterval(afficherDateEtHeure, 1000);
+
+// Appeler la fonction immédiatement au chargement de la page
+afficherDateEtHeure();
+
+
+    </script>
+</body>
+</html>
